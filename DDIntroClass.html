@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+
+<!-- start CSS style -->
+<style>
+
+.main {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.entry {
+  margin-top: 10px;
+}
+
+.results {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+</style>
+<!-- end CSS style -->
+
+</head>
+
+<body>
+
+<div class="main">
+  <p class="title">My Friend Checker</p>
+
+  <div class="entry">
+    Enter a friend's name:
+    <input type="text" id="firstname" name="firstname">
+    <input type="button" value="Submit" onclick="checkIfNameIsAFriend()">
+  </div>
+  <div class="results" id="namecheck"></div>
+
+</div>
+
+</body>
+<html>
+
+<script>
+
+const myBestFriends = ['roselyn', 'isabel', 'chloe', 'tania', 'logan'];
+
+// this method gets the firstname property and calls the namechecker
+const checkIfNameIsAFriend = () => {
+  const friendName = document.getElementById('firstname').value;
+  const isFriend = isThisMyFriend (friendName);
+  document.getElementById('namecheck').innerHTML = friendName + ' is my friend: ' + isFriend;
+}
+
+// this method takes a name and checks it against the myBestFriends array for a match
+const isThisMyFriend = (inName) => {
+  // lowercase to ensure correct format
+  if (myBestFriends.includes(inName.toLowerCase())) {
+    // its a match, return true
+    return true;
+  }
+  // no match return false
+  return false;
+}
+
+</script>
