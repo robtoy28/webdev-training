@@ -18,6 +18,7 @@
 
   .title {
     font-weight: bold;
+    color: purple;
   }
 
   .entry {
@@ -34,26 +35,28 @@
 
 </head>
 
-<body>
+  <body>
 
-<div class="main">
-  <p class="title">My Friend Checker</p>
+    <div class="main">
+      <p class="title">My Friend Checker</p>
 
-  <div class="entry">
-    Enter a friend's name:
-    <input type="text" id="firstname" name="firstname">
-    <input type="button" value="Submit" onclick="checkIfNameIsAFriend()">
-  </div>
-  <div class="results" id="namecheck"></div>
+      <p class="title">My Boos Checker</p>
 
-</div>
+      <div class="entry">
+        Enter a friend's name:
+        <input type="text" id="firstname" name="firstname">
+        <input type="button" value="Submit" onclick="checkIfNameIsAFriend()">
+      </div>
+      <div class="results" id="namecheck"></div>
 
-</body>
-<html>
+    </div>
+
+  </body>
+</html>
 
 <script>
 
-const myBestFriends = ['roselyn', 'isabel', 'chloe', 'tania', 'logan'];
+const myBestFriends = ['roselyn', 'isabel', 'chloe', 'tania', 'logan', 'sydney', 'raeaan'];
 
 // this method gets the firstname property and calls the namechecker
 const checkIfNameIsAFriend = () => {
