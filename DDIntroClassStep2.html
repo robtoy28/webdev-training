@@ -1,19 +1,20 @@
 <script>
 // reusable functions
-function goPotty(location){
-  console.log('going potty', location);
-  openTheDoor();
+function goPotty(location, soap){
+  openTheDoor(location);
   closeTheDoor();
   sitDown();
   doYourThing();
   flushTheToilet();
-  washYourHands();
+  washYourHands(soap);
   // reused functions
   openTheDoor();
   closeTheDoor();
 }
-function openTheDoor(){
-  console.log('Open the door');
+
+function openTheDoor(location){
+  console.log('Open the door', location);
+
 }
 function closeTheDoor(){
   console.log('Close the door');
@@ -21,16 +22,28 @@ function closeTheDoor(){
 function doYourThing(){
   console.log('Do your thing');
 }
+
 function sitDown(){
   console.log('Sit down');
 };
+
 function flushTheToilet(){
   console.log('Flush the toilet');
 }
-function washYourHands() {
-  console.log('Washing Your Hands');
+
+function washYourHands(soap) {
+  console.log('Washing Your Hands with', soap);
 }
-goPotty('downstairs');
+
+let myLocation = 'downstairs';
+const brandOfSoap = 'Dove';
+
+goPotty(myLocation, brandOfSoap);
+
+myLocation = 'outside';
+
+goPotty(myLocation, brandOfSoap);
+
 </script>
 
 
