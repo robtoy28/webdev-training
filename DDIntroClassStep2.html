@@ -1,42 +1,42 @@
 <script>
 // reusable functions
-
-function goPotty(){
-  console.log('going potty');
+function goPotty(location){
+  console.log('going potty', location);
   openTheDoor();
   closeTheDoor();
   sitDown();
   doYourThing();
   flushTheToilet();
   washYourHands();
+  // reused functions
+  openTheDoor();
+  closeTheDoor();
 }
-
 function openTheDoor(){
-  console.log('open the door');
+  console.log('Open the door');
 }
-
 function closeTheDoor(){
-  console.log('close the door');
+  console.log('Close the door');
 }
-
 function doYourThing(){
-  console.log('do your thing');
+  console.log('Do your thing');
 }
-
 function sitDown(){
-  console.log('sit down');
+  console.log('Sit down');
 };
-
 function flushTheToilet(){
-  console.log('flush the toilet');
+  console.log('Flush the toilet');
 }
 function washYourHands() {
-  console.log('washYourHands');
+  console.log('Washing Your Hands');
 }
-
-goPotty();
+goPotty('downstairs');
 </script>
 
 
 // type in their own functions
 // then retype using es6
+//12-15-2018
+// adding goPotty with parameter passed in.
+// create var and pass into goPotty
+// create another var and pass into goPotty but used in washYourHands(type of soap)
