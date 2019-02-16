@@ -1,0 +1,41 @@
+<html>
+<body>
+  <h1>Whats my Salary??</h1>
+  <div>Enter a hourly rate: $ <input type="text" id="hourlyrate"></div>
+  <div>Enter the number of Hours Worked Per Week: <input type="text" id="numofhours"></div>
+  <button type="button" name="button" onclick="doYourThing()">GO</button>
+  <div id="answer">
+  </div>
+</body>
+</html>
+
+<script>
+
+  // lesson #3
+  function doYourThing(){
+    console.log('doing it');
+    var hourlyrate = document.getElementById("hourlyrate").value;
+    var numofhours = document.getElementById("numofhours").value;
+    var result = hourlyrate * numofhours * 52;
+    document.getElementById("answer").innerHTML = "You earn $" + result + " per year";
+  }
+
+  // lesson #1 -calculations, function reuse
+  function multiply(a, b){
+    return a * b;
+  }
+
+  var firstNumber = 9;
+  var secondNumber = 16;
+  console.log(multiply(firstNumber,secondNumber));
+
+// lesson #2
+  function whatsMyYearlySalary (hourlyrate, numberofHoursAWeek) {
+    return (hourlyrate * numberofHoursAWeek * 52);
+  }
+
+  var dollarsPerHour = 7.50;
+  var numberOfHoursPerWeek = 25;
+  console.log(whatsMyYearlySalary( dollarsPerHour, numberOfHoursPerWeek));
+
+</script>
