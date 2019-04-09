@@ -18,12 +18,13 @@
 
   .title {
     font-weight: bold;
-    color: purple;
+    color: pink;
   }
 
   .entry {
     margin-top: 10px;
     text-align: left;
+    font-size: 25px;
   }
 
   .submit {
@@ -34,7 +35,7 @@
   .results {
     margin-top: 30px;
     font-weight: bold;
-    color: green;
+    color: red;
   }
 
 </style>
@@ -43,11 +44,12 @@
 <body>
   <div class="main">
     <h1 class="title">Whats my Salary??</h1>
+    <div class="entry">Enter a name: <input type="text" id="name"></div>
+
     <div class="entry">Enter a hourly rate: $ <input type="text" id="hourlyrate"></div>
     <div class="entry">Enter the number of Hours Worked Per Week: <input type="text" id="numofhours"></div>
     <button class="submit" type="button" name="button" onclick="doYourThing()">GO</button>
     <div class="results" id="answer">
-    </div>
   </div>
 </body>
 </html>
@@ -59,9 +61,10 @@
   // lesson #4
   function doYourThing(){
     var hourlyrate = document.getElementById("hourlyrate").value;
+    var name = document.getElementById("name").value;
     var numofhours = document.getElementById("numofhours").value;
     var result = getMyYearlySalary(hourlyrate, numofhours);
-    document.getElementById("answer").innerHTML = "You earn $" + result + " per year";
+    document.getElementById("answer").innerHTML = name + ", You earn $" + result + " per year";
   }
 
 </script>

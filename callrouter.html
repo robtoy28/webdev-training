@@ -1,0 +1,179 @@
+<html>
+<title>Incoming Call Router</title>
+
+<!-- start CSS style -->
+<style>
+
+  body {
+    background-color: #00000;
+    font-size: 100%;
+    font-family: Verdana, Arial;
+  }
+
+  @media (max-width: 1440px){
+  	h1 {
+  		font-size: 4.1em;
+  	}
+    .entry {
+      font-size: 3.1em;
+    }
+
+    .goodresults {
+      margin-top: 30px;
+      line-height: normal;
+      color: green;
+      font-size: 2.8em;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .warningresults {
+      margin-top: 30px;
+      line-height: normal;
+      color: red;
+      font-size: 2.8em;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    select {
+      font-size: 1.1em;
+    }
+
+    .warningList {
+      text-align: -webkit-auto;
+    }
+
+    .processing {
+      margin-top: 30px;
+      color: black;
+      font-size: 2.8em;
+
+    }
+    .unicorns {
+      display:none;
+    }
+
+    .results-container{
+      background-color: #00000;
+    }
+  }
+
+  .main {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 95%;
+  }
+
+  .title {
+    font-weight: bold;
+    color: black;
+  }
+
+  .entry {
+    margin-top: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .unicorns {
+    display:none;
+  }
+
+</style>
+<!-- end CSS style -->
+
+<body>
+  <div class="main">
+    <h1 class="title">Incoming Call Router</h1>
+    <div class="entry">Select Caller:
+        <select id = "name" onchange="doYourThing()">
+          <option value="">--SELECT--</option>
+          <option value="fox">Fox</option>
+          <option value="drx">Dr. X</option>
+          <option value="todd">Todd</option>
+          <option value="rob">Rob</option>
+        </select>
+
+    </div>
+    <hr/>
+    <div class="processing" id="processing"></div>
+    <div class="results-container">
+      <div class="warningresults" id="warningresults"></div>
+      <div class="goodresults" id="goodresults"></div>
+      <div class="unicorns" id="unicorns">
+        <iframe src="https://giphy.com/embed/8GVrKICuyR5ny" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/csak-kiss-unicorn-csak-8GVrKICuyR5ny">via GIPHY</a></p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+
+<script>
+
+  const actionText = {
+    'fox': {
+      responses: ['Block number.','Report user.', 'Delete contact from phonebook.', 'Call the police.', 'Retreat like a lobster.']
+    },
+    'drx': {
+      responses: ['Accept text or call for chiropractic treatment appointment scheduling only.']
+    },
+    'todd': {
+      responses: ['Accept text or call for IBM mentoring purposes only.']
+    },
+    'rob': {
+      responses: ['Smile because this lobster took the time to contact you!','Laugh because this app is funny!', 'Proceed towards him like a lobster.', 'Accept text or call because he is the one that will positively change your life!', 'Think about him daily.']
+    },
+
+  }
+
+  const doYourThing = () => {
+    resetStuff();
+    document.getElementById('processing').innerHTML = "<i>Processing recommendation using Predictive Modeling...</i>";
+    setTimeout(revealResults, 3000);
+  }
+
+  const resetStuff = () => {
+    document.getElementById('unicorns').style.display = 'none';
+    document.getElementById('warningresults').innerHTML = '';
+    document.getElementById('goodresults').innerHTML = '';
+  }
+
+  const buildResponse = (name) => {
+    //get responses from mapping and build <li>
+    let returnResponse = '';
+    const personaResponses = actionText[name].responses;
+    personaResponses.forEach(function(element) {
+      returnResponse += '<li>';
+      returnResponse += element;
+      returnResponse += '</li>';
+    });
+    return returnResponse;
+  }
+
+  const revealResults = () => {
+    const name = document.getElementById("name").value;
+    let idName = 'warningresults';
+    let response = '<ul class="warningList">';
+    response = response += buildResponse(name);
+
+    if (name === 'rob') {
+      idName = 'goodresults';
+      document.getElementById('unicorns').style.display = 'block';
+    }
+    response += '</ul>';
+    document.getElementById('processing').innerHTML = "<b>Recommended Actions:</b>";
+
+    document.getElementById(idName).innerHTML = response;
+  }
+
+/* TODO: read dropdown from json
+  background color/images
+
+
+*/
+
+
+</script>
