@@ -1,5 +1,5 @@
 <html>
-<title>Incoming Call Router</title>
+<title>Incoming Call Router - Your Guide When He Calls!</title>
 
 <!-- start CSS style -->
 <style>
@@ -10,12 +10,15 @@
     font-family: Verdana, Arial;
   }
 
-  @media (max-width: 1440px){
+  @media (max-width: 1040px){
   	h1 {
   		font-size: 4.1em;
+      margin-block-end: 0.47em;
+
   	}
     .entry {
       font-size: 3.1em;
+      padding: 15px;
     }
 
     .goodresults {
@@ -57,11 +60,23 @@
     .results-container{
       background-color: #00000;
     }
+
+    .instructions {
+      padding-top: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+      color: black;
+      font-size: 1.8em;
+      font-style: italic;
+      text-align: -webkit-auto;
+    }
   }
 
   .main {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
     text-align: center;
     width: 95%;
   }
@@ -87,6 +102,11 @@
 <body>
   <div class="main">
     <h1 class="title">Incoming Call Router</h1>
+    <div class="instructions">
+      When "he" calls, what do you do? This powerful AI application scours and processes
+      all available data on each caller and suggests your next actions. Use daily as a reminder.
+    </div>
+    <hr/>
     <div class="entry">Select Caller:
         <select id = "name" onchange="doYourThing()">
           <option value="">--SELECT--</option>
@@ -115,30 +135,36 @@
 
   const actionText = {
     'fox': {
-      responses: ['Block number.','Report user.', 'Delete contact from phonebook.', 'Call the police.', 'Retreat like a lobster.']
+      responses: ['Block number.', 'Un-link bank accounts.', 'Report user.', 'Delete contact from phonebook.', 'Call the police.', 'Retreat like a lobster.', 'Fire him.', 'Call Rob to discuss his application.']
     },
     'drx': {
-      responses: ['Accept text or call for chiropractic treatment appointment scheduling only.']
+      responses: ['Accept text or call for chiropractic treatment appointment scheduling only.', 'Create auto-response that says your bike is in the shop.', 'Call Rob to discuss his application.']
     },
     'todd': {
       responses: ['Accept text or call for IBM mentoring purposes only.']
     },
     'rob': {
-      responses: ['Smile because this lobster took the time to contact you!','Laugh because this app is funny!', 'Proceed towards him like a lobster.', 'Accept text or call because he is the one that will positively change your life!', 'Think about him daily.']
+      responses: ['Smile because this lobster took the time to contact you!','Laugh because this app is funny!', 'Proceed towards him like a confident lobster.', 'Accept text or call because he is the one that will positively change your life!', 'Think about him daily.', 'Give him the job.']
     },
 
   }
 
   const doYourThing = () => {
     resetStuff();
-    document.getElementById('processing').innerHTML = "<i>Processing recommendation using Predictive Modeling...</i>";
-    setTimeout(revealResults, 3000);
+    const name = document.getElementById("name").value;
+    if (name !== '') {
+      document.getElementById('processing').innerHTML = "<i>Processing recommendation using Predictive Modeling...</i>";
+      setTimeout(revealResults, 3000);
+    }
+
   }
 
   const resetStuff = () => {
     document.getElementById('unicorns').style.display = 'none';
     document.getElementById('warningresults').innerHTML = '';
     document.getElementById('goodresults').innerHTML = '';
+    document.getElementById('processing').innerHTML = '';
+
   }
 
   const buildResponse = (name) => {
@@ -164,13 +190,12 @@
       document.getElementById('unicorns').style.display = 'block';
     }
     response += '</ul>';
-    document.getElementById('processing').innerHTML = "<b>Recommended Actions:</b>";
+    document.getElementById('processing').innerHTML = '<b>Recommended Actions:</b>';
 
     document.getElementById(idName).innerHTML = response;
   }
 
 /* TODO: read dropdown from json
-  background color/images
 
 
 */
